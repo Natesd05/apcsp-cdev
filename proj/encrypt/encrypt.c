@@ -13,15 +13,24 @@ int CHARS_LEN = 62;
 
 char shiftChar(char c, int shift, int direction)
 {
-  // implement the character shift here:
-  //  given a char c shift it either forwards (direction == 1) or backwards (direction == 0)
-  //  use the CHARS array above
-  //  return the newly shifted char
-  //
-  // eg.
-  //   shiftChar('c', 3, 1) : 'f'
-  //   shiftChar('S', 2, 0) : 'P'
-  //   shiftChar('b', 3, 0) : '8'
+  int index = strchr(CHARS, c) - CHARS;
+  if (direction == 0){
+    index -= shift;
+  }
+  else {
+    index += shift;
+  }
+  if(index < 0)
+    index = CHARS_LEN + index;
+  else if (index >= CHARS_LEN);
+    index = index % CHARS_LEN;
+
+  if (c == ' '){
+    return ' ';
+  }
+  else {
+    return CHARS[index];
+  }
 }
 
 
